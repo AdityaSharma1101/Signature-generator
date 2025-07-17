@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Savishty Signature Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f7fafd;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .form-container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 450px;
+      margin: 0 auto;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #1a2c59;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #1a2c59;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #output {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Enter Contact Information</h2>
+    <label>Name *</label>
+    <input type="text" id="name">
+
+    <label>Position *</label>
+    <input type="text" id="position">
+
+    <label>Phone *</label>
+    <input type="text" id="phone">
+
+    <label>Email *</label>
+    <input type="text" id="email">
+
+    <label>LinkedIn URL *</label>
+    <input type="text" id="linkedin">
+
+    <button onclick="generateSignature()">Generate Signature</button>
+  </div>
+
+  <div id="output" class="form-container" style="display: none;">
+  <h3>Generated Signature:</h3>
+  <div id="signature-box"></div>
+  <button onclick="copyToClipboard()">Copy Signature</button>
+  </div>
+
+  <script>
+  function generateSignature() {
+    const name = document.getElementById("name").value;
+    const position = document.getElementById("position").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const linkedin = document.getElementById("linkedin").value;
+
+    const signatureHTML = `
+    <table style="font-family: 'Segoe UI', Arial, sans-serif; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 10px; text-align: center; vertical-align: top;">
+          <img src="Shaping_Future__Sharpening_Skills1-removebg-preview.png" alt="Savishty Logo" style="width: 100px; margin-bottom: 1px;" /><br/>
+          <div style="margin: 1px 0;">
+            <a href="https://www.linkedin.com/company/savishty" target="_blank" style="text-decoration: none; margin: 0 5px;">
+              <img src="linkedin.png" alt="LinkedIn" width="22" style="vertical-align: middle;"/>
+            </a>
+            <a href="https://www.instagram.com/savishty" target="_blank" style="text-decoration: none; margin: 0 5px;">
+              <img src="insta.png" alt="Instagram" width="22" style="vertical-align: middle;"/>
+            </a>
+            <a href="https://www.youtube.com/@savishty" target="_blank" style="text-decoration: none; margin: 0 5px;">
+              <img src="youtube.png" alt="YouTube" width="22" style="vertical-align: middle;"/>
+            </a>
+          </div>
+          <img src="aws.png" alt="AWS Partner" style="width: 100px; margin-top: 10px;"/>
+        </td>
+        <td style="padding: 0 15px; vertical-align: middle;">
+          <div style="width: 4px; height: 100px; background-color: #130d43; border-radius: 2px;"></div>
+        </td>
+        <td style="padding: 14px 20px; vertical-align: middle;">
+          <p style="margin: 0; font-size: 18px; font-weight: bold;">
+            <a href="${linkedin}" target="_blank" style="color: #130d43; text-decoration: none;">
+              ${name}
+            </a>
+          </p>
+          <p style="margin: 4px 0 16px 0; font-size: 12px; font-weight: 500; color: #130d43;">${position}</p>
+          <p style="margin: 6px 0; font-size: 10px; color: #000;">
+            <img src="message.png" width="16" style="vertical-align: middle; margin-right: 6px;"/> ${email}
+          </p>
+          <p style="margin: 6px 0; font-size: 10px; color: #000;">
+            <img src="call.png" width="16" style="vertical-align: middle; margin-right: 6px;"/> ${phone}
+          </p>
+          <p style="margin: 6px 0; font-size: 10px; color: #000;">
+            <img src="website.png" width="16" style="vertical-align: middle; margin-right: 6px;"/> www.savishty.com
+          </p>
+        </td>
+      </tr>
+    </table>`;
+
+    document.getElementById("signature-box").innerHTML = signatureHTML;
+    document.getElementById("output").style.display = "block";
+  }
+
+  function copyToClipboard() {
+    const range = document.createRange();
+    range.selectNode(document.getElementById("signature-box"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    try {
+      const success = document.execCommand('copy');
+      alert(success ? "Signature copied to clipboard!" : "Failed to copy signature.");
+    } catch (err) {
+      alert("Copy failed. Please copy manually.");
+    }
+    window.getSelection().removeAllRanges();
+  }
+</script>
+
+
+  
+  
+
+</body>
+</html>
