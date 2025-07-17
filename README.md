@@ -17,5 +17,5 @@ This is a simple HTML-based tool that generates a professional email signature f
 ## Author 
 Aditya Sharma 
 
---
+---
 Feel free to fork or modify for your own team!
