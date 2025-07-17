@@ -1,6 +1,6 @@
 # ✨ Email Signature Generator
 
-This is a simple HTML-based tool that generates a professional email signature for Savishty team members.
+This is a simple HTML-based tool that generates a professional email signature for any company.
 
 ## 🛠️ How It Works
 
@@ -15,3 +15,6 @@ This is a simple HTML-based tool that generates a professional email signature f
 - Mobile-friendly UI
 
 Feel free to fork or modify for your own team!
+
+## Author 
+Aditya Sharma 
